@@ -224,6 +224,9 @@ public class SearchRideFragment extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnLetsRide:
+			// if drawer is open then close it.
+			mOnMessageListner.closeOpenDrawer(true);
+			
 			if (mSwtMotorBikes.isChecked()) {
 				Log.d(TAG, "MotorCycle is checked");
 				AppPreferences.getInstance(v.getContext()).setMotorcycleStatus(

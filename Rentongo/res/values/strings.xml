@@ -16,6 +16,7 @@
     <string name="internet_try">Try Again</string>
     <!-- screen name -->
     <string name="booking_verification">Booking Verification</string>
+    <string name="bike_details">Bike Details</string>
 
     <!-- search screen -->
     <string name="search_ride">Search Ride</string>

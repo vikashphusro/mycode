@@ -135,7 +135,7 @@ public class MapViewFragment extends Fragment {
 		// Get View of Custom marker
 		mMarkerBikeImage = (ImageView) marker1
 				.findViewById(R.id.imgMapViewItem);
-		
+		mMarkerBikeImage.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.bike_image));
 		mTxtKm = (TextView) marker1.findViewById(R.id.txtMapViewKm);
 		mTxtKm.setText("" + 50 + "KM");
 		mTxtRentPerDay = (TextView) marker1
