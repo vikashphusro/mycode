@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <!-- confirmation screen -->
+    <color name="devider_color">#228072</color>
+    
+    <color name="notification_baf_color">#23B9A4</color>
+    
+    
+</resources>

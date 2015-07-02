@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <LinearLayout
+                android:id="@+id/litPanel1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/search_bg1"
+                android:orientation="vertical"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/txtSearchYourLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/search_ride_location"
+                    android:textColor="@color/black" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:id="@+id/imgSearchLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/location_icon_pin" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/imgSearchLocation"
+                        android:orientation="vertical" >
+
+                        <EditText
+                            android:id="@+id/edtSearchLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:focusable="false"
+                            android:hint="@string/search_ride_location_hint"
+                            android:inputType="textCapWords|textPostalAddress"
+                            android:singleLine="true"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/searching_devider" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/txtSearchFrom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/search_ride_from"
+                            android:textColor="@color/black" />
+
+                        <RelativeLayout
+                            android:id="@+id/relLtFrom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:clickable="true" >
+
+                            <ImageView
+                                android:id="@+id/imgSearchDateIcon1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/search_date_icon" />
+
+                            <TextView
+                                android:id="@+id/txtSearchDayFrom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@+id/imgSearchDateIcon1"
+                                android:text="Sunday"
+                                android:textColor="@color/notification_baf_color" />
+
+                            <TextView
+                                android:id="@+id/txtSearchMonthAndDateFrom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/txtSearchDayFrom"
+                                android:layout_below="@+id/txtSearchDayFrom"
+                                android:text="May 29"
+                                android:textColor="@color/black" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/serach_devider" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:background="@drawable/search_arr" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/txtSearchTo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/search_ride_to"
+                            android:textColor="@color/black" />
+
+                        <RelativeLayout
+                            android:id="@+id/relLtTo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:clickable="true" >
+
+                            <ImageView
+                                android:id="@+id/imgSearchDateIcon2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/search_date_icon" />
+
+                            <TextView
+                                android:id="@+id/txtSearchDayTo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@+id/imgSearchDateIcon2"
+                                android:text="Monday"
+                                android:textColor="@color/notification_baf_color" />
+
+                            <TextView
+                                android:id="@+id/txtSearchMonthAndDateTo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignLeft="@+id/txtSearchDayTo"
+                                android:layout_below="@+id/txtSearchDayTo"
+                                android:text="May 30"
+                                android:textColor="@color/black" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/serach_devider" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/litPanel2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/litPanel1"
+                android:layout_alignRight="@+id/litPanel1"
+                android:layout_below="@+id/litPanel1"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/search_bg2"
+                android:orientation="vertical"
+                android:paddingLeft="10dp" >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:id="@+id/imgMotorbikes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/motorbikes" />
+
+                    <TextView
+                        android:id="@+id/txtMotorcycles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/imgMotorbikes"
+                        android:text="@string/search_ride_motorbikes"
+                        android:textColor="@color/notification_baf_color" />
+
+                    <Switch
+                        android:id="@+id/tglMotorbikes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/check"
+                        android:checked="true"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn=""
+                        android:thumb="@android:color/transparent"
+                        android:track="@android:color/transparent" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="@drawable/serach_devider" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:id="@+id/imgSccoters"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/scooters" />
+
+                    <TextView
+                        android:id="@+id/txtSccoters"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/imgSccoters"
+                        android:text="@string/search_ride_scooters"
+                        android:textColor="@color/notification_baf_color" />
+
+                    <Switch
+                        android:id="@+id/tglSccoters"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/check"
+                        android:checked="true"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn=""
+                        android:thumb="@android:color/transparent"
+                        android:track="@android:color/transparent" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="@drawable/serach_devider" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:id="@+id/imgBicycles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bicycles" />
+
+                    <TextView
+                        android:id="@+id/txtBicycles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/imgBicycles"
+                        android:text="@string/search_ride_bicycles"
+                        android:textColor="@color/notification_baf_color" />
+
+                    <Switch
+                        android:id="@+id/tglBicycles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/check"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn=""
+                        android:thumb="@android:color/transparent"
+                        android:track="@android:color/transparent" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnLetsRide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/litPanel2"
+                android:layout_alignRight="@+id/litPanel1"
+                android:layout_below="@+id/litPanel2"
+                android:background="@drawable/search_bottom_button"
+                android:gravity="center"
+                android:text="Let&apos;s Ride"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

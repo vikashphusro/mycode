@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sorting_and_filter_panel" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtSorting1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Sorting"
+            android:textColor="@color/notification_baf_color"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btnSortingPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2.5dp"
+                android:layout_weight="1"
+                android:background="@drawable/sorting_and_filter_panel2"
+                android:gravity="center"
+                android:text="Price"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnSortingProximity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2.5dp"
+                android:layout_weight="1"
+                android:background="@drawable/sorting_and_filter_panel2"
+                android:gravity="center"
+                android:text="Proximity"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sorting_and_filter_devider" />
+
+        <TextView
+            android:id="@+id/txtSorting2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Filter"
+            android:textColor="@color/notification_baf_color"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:id="@+id/txtSorting3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Distance"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDistanceMinKm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/txtSorting3"
+                android:text="0 KM"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtDistanceMAxKm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtSorting3"
+                android:text="15 KM"
+                android:textColor="@color/black" />
+
+            <SeekBar
+                android:id="@+id/seekSortingDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtDistanceMAxKm"
+                android:background="@color/white"
+                android:progressDrawable="@drawable/styled_progress"
+                android:thumb="@drawable/sorting_and_filter_devider"
+                android:thumbOffset="2dp" />
+
+            <TextView
+                android:id="@+id/txtSorting4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/edtSortingEnterKm"
+                android:layout_alignParentLeft="true"
+                android:layout_alignTop="@+id/edtSortingEnterKm"
+                android:gravity="center_vertical"
+                android:text="or enter here"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edtSortingEnterKm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/seekSortingDistance"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/txtSorting4"
+                android:background="@drawable/sorting_and_filter_edittext_panel3"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="3"
+                android:padding="2.5dp"
+                android:singleLine="true"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:id="@+id/txtSorting5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Price/Day"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtPriceMin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/txtSorting5"
+                android:text="0"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtPriceMax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtSorting5"
+                android:text="9500"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/LinLayoutForRangeSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtPriceMax"
+                android:orientation="horizontal" >
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtSorting6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/edtSortingEnterMinPrice"
+                android:layout_alignParentLeft="true"
+                android:layout_alignTop="@+id/edtSortingEnterMinPrice"
+                android:gravity="center_vertical"
+                android:text="or enter here"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edtSortingEnterMinPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/LinLayoutForRangeSeekBar"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/txtSorting6"
+                android:background="@drawable/sorting_and_filter_edittext_panel2"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="5"
+                android:padding="2.5dp"
+                android:singleLine="true"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtSorting7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/edtSortingEnterMinPrice"
+                android:layout_alignTop="@+id/edtSortingEnterMinPrice"
+                android:layout_below="@+id/LinLayoutForRangeSeekBar"
+                android:layout_toRightOf="@+id/edtSortingEnterMinPrice"
+                android:gravity="center_vertical"
+                android:text="to"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edtSortingEnterMaxPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/LinLayoutForRangeSeekBar"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/txtSorting7"
+                android:background="@drawable/sorting_and_filter_edittext_panel2"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="4"
+                android:padding="2.5dp"
+                android:singleLine="true"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:id="@+id/txtSorting8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dp"
+                android:text="Brand"
+                android:textColor="@color/notification_baf_color"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/relSortingSpinnerBrand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtSorting8"
+                android:background="@drawable/sorting_and_filter_edittext_panel1"
+                android:clickable="true"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/txtSelectBrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:hint="Select Brand"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/sorting_down_arrow" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <TextView
+                android:id="@+id/txtSorting9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dp"
+                android:text="Engine Capacity"
+                android:textColor="@color/notification_baf_color"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/relSortingSpinnerEngineCapacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtSorting9"
+                android:background="@drawable/sorting_and_filter_edittext_panel1"
+                android:clickable="true"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/txtSelectEngine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:hint="Select Engine Capacity"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/sorting_down_arrow" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btn_login"
+            android:gravity="center"
+            android:text="Apply Filter"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imgPaymentSuccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/payment_success_icon" />
+
+        <TextView
+            android:id="@+id/txtPayment_success_Order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/payment_success_text1"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPaymentSuccess1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/payment_success_text2"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtPaymentSuccess2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/payment_success_text3"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtPaymentSuccessPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/payment_success_phone"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPaymentSuccess3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/payment_success_happy_rating"
+            android:textColor="@color/notification_baf_color"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp" >
+
+            <ImageView
+                android:id="@+id/devider1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/payment_success_devider" />
+
+            <EditText
+                android:id="@+id/edtPaymentSuccessPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/devider1"
+                android:layout_below="@+id/devider1"
+                android:layout_margin="5dp"
+                android:background="@null"
+                android:drawableLeft="@drawable/password_icon_login"
+                android:drawablePadding="20dp"
+                android:hint="@string/payment_success_password_hint"
+                android:inputType="textPassword" >
+            </EditText>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtPaymentSuccessPass"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/payment_success_devider" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnPaymentSuccessTrackOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/payment_success_track_order"
+            android:gravity="center"
+            android:text="@string/payment_success_track_order"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnPaymentSuccessMakeAnotherTras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:background="@drawable/payment_sucess_make_another"
+            android:gravity="center"
+            android:text="@string/payment_sucsess_make_another"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</ScrollView>

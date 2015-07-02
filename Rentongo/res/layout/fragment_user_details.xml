@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtUserDetails1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_details_text1"
+            android:textColor="@color/notification_baf_color" />
+
+        <TextView
+            android:id="@+id/txtLoginNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:clickable="true"
+            android:linksClickable="true"
+            android:text="@string/user_details_login_now"
+            android:textColor="@color/notification_baf_color"
+            android:textColorLink="@color/notification_baf_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/user_details_or_devider" />
+
+        <TextView
+            android:id="@+id/txtUserDetailsOr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="OR"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/user_details_or_devider" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtUserDetails2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="@string/user_details_guest"
+        android:textColor="@color/notification_baf_color" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:background="@drawable/user_details_panel"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/edtUserDetailsName"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/user_icon"
+            android:drawablePadding="20dp"
+            android:hint="@string/user_details_name"
+            android:imeOptions="actionNext"
+            android:inputType="textCapWords"
+            android:singleLine="true"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_detaill_divider" />
+
+        <EditText
+            android:id="@+id/edtUserDetailsPhoneNum"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/phone_icon"
+            android:drawablePadding="20dp"
+            android:hint="@string/user_details_phone_number"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_detaill_divider" />
+
+        <EditText
+            android:id="@+id/edtUserDetailsEmail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/email_icon"
+            android:drawablePadding="20dp"
+            android:hint="@string/user_details_email_add"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnUserDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/btn_login"
+        android:text="@string/user_details_continue"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/txtUserDetails3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="Don&apos;t have a login yet? "
+            android:textColor="@color/notification_baf_color" />
+
+        <TextView
+            android:id="@+id/txtUserDetailSignUP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:clickable="true"
+            android:linksClickable="true"
+            android:text="@string/user_details_signup_now"
+            android:textColor="@color/notification_baf_color"
+            android:textColorLink="@color/notification_baf_color" />
+    </LinearLayout>
+
+</LinearLayout>
