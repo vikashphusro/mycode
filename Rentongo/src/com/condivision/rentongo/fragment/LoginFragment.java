@@ -159,6 +159,7 @@ public class LoginFragment extends Fragment implements OnClickListener,
 		txtTitle.setTypeface(Constant.getFontNormal(getActivity()));
 		txtForgotPass.setTypeface(Constant.getFontNormal(getActivity()));
 		edtPhoneNumber.setTypeface(Constant.getFontNormal(getActivity()));
+		//edtPhoneNumber.setSelection(edtPhoneNumber.getHint().length());
 		btnResetPass.setTypeface(Constant.getFontSemiBold(getActivity()));
 		btnCancle.setTypeface(Constant.getFontSemiBold(getActivity()));
 		btnResetPass.setOnTouchListener(this);

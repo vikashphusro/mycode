@@ -56,7 +56,7 @@ public class Constant {
 	 */
 	public static String getMonth(int month) {
 		String[] monthNames = { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-				"July", "Aug", "Sep", "Oct", "Nov", "Dec" };
+				"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 		return monthNames[month];
 	}
 
@@ -67,7 +67,7 @@ public class Constant {
 	 * @return
 	 */
 	public static String getDay(int day) {
-		String[] dayName = { "", "Sun", "Mon", "Tues", "Wed", "Thur", "Fri",
+		String[] dayName = { "", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri",
 				"Sat" };
 		return dayName[day];
 

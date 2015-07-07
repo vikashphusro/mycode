@@ -2,6 +2,14 @@ package com.condivision.rentongo.fragment;
 
 import java.util.Calendar;
 
+import com.condivision.rentongo.R;
+import com.condivision.rentongo.fragment.SearchRideFragment.DatePickerFragmentFrom;
+import com.condivision.rentongo.fragment.SearchRideFragment.DatePickerFragmentTo;
+import com.condivision.rentongo.https.bins.LocationBin;
+import com.condivision.rentongo.interfaces.OnMessageListner;
+import com.condivision.rentongo.util.AppPreferences;
+import com.condivision.rentongo.util.Constant;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -9,16 +17,16 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.graphics.PorterDuff.Mode;
 import android.graphics.Typeface;
+import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -27,24 +35,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.condivision.rentongo.R;
-import com.condivision.rentongo.https.bins.LocationBin;
-import com.condivision.rentongo.interfaces.OnMessageListner;
-import com.condivision.rentongo.util.AppPreferences;
-import com.condivision.rentongo.util.Constant;
-
-/**
- * This Class used to search location, date selection and byke selection.
- * 
- * @author rentongo
- *
- */
-public class SearchRideFragment extends Fragment implements OnClickListener,
-		OnTouchListener {
-
-	private static final String TAG = "SearchRideFragment";
-	private static final SearchRideFragment mSearchRideFragment = new SearchRideFragment();
-	// private Typeface fontSemiBold = null, fontNormal = null;
+public class SearchResultRideFragment extends Fragment implements OnClickListener {
+	private static final String TAG = "SearchResultRideFragment";
+	
+	private Typeface fontSemiBold = null, fontNormal = null;
 	private OnMessageListner mOnMessageListner = null;
 	private EditText edtLocation;
 	private DatePickerDialog mDatePickerDialogFrom, mDatePickerDialogTo;
@@ -57,19 +51,12 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 	private TextView txtDayFrom, txtDayTo, txtMonthAndDateFrom,
 			txtMonthAndDateTo;
 
-	private SearchRideFragment() {
-		Log.d(TAG, "private Constructor");
-
-	}
-
-	public static SearchRideFragment getInstance() {
-		return mSearchRideFragment;
-	}
+	
 
 	@Override
 	public void onAttach(Activity activity) {
+		// TODO Auto-generated method stub
 		super.onAttach(activity);
-		Log.d(TAG, "onAttach");
 		try {
 			mOnMessageListner = (OnMessageListner) activity;
 			// mActivity = (FragmentActivity) activity;
@@ -82,15 +69,13 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.d(TAG, "onCreate");
-
 		// default calendra
 		mCalendar = Calendar.getInstance();
-
-		mCurrentYear = mCalendar.get(Calendar.YEAR);
-		mCurrentMonth = mCalendar.get(Calendar.MONTH);
-		mCurrentDate = mCalendar.get(Calendar.DAY_OF_MONTH);
-
+		/*
+		 * mCurrentYear = mCalendar.get(Calendar.YEAR); mCurrentMonth =
+		 * mCalendar.get(Calendar.MONTH); mCurrentDate =
+		 * mCalendar.get(Calendar.DAY_OF_MONTH);
+		 */
 		mCalendraFrom = Calendar.getInstance();
 		mCalendraFrom.add(Calendar.DAY_OF_MONTH, 1);
 		mDateFrom = mCalendraFrom.get(Calendar.DATE);
@@ -104,6 +89,19 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 		mDayTo = mCalendraTo.get(Calendar.DAY_OF_WEEK);
 		mMonthTo = mCalendraTo.get(Calendar.MONTH);
 		mYearTo = mCalendraTo.get(Calendar.YEAR);
+
+		/*
+		 * mYearFrom=mCalendar.get(Calendar.YEAR); mMonthFrom=
+		 * mCalendar.get(Calendar.MONTH); mDateFrom=mCalendar.add(mCalendar,
+		 * value); mDayFrom = mCalendar.get(Calendar.DAY_OF_WEEK);
+		 * 
+		 * mYearTo = mCalendar.get(Calendar.YEAR);
+		 */
+
+		fontSemiBold = Typeface.createFromAsset(getActivity().getAssets(),
+				"proximanova-semibold-webfont.ttf");
+		fontNormal = Typeface.createFromAsset(getActivity().getAssets(),
+				"proximanova-regular-webfont.ttf");
 
 	}
 
@@ -141,43 +139,62 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 		Button btnLetRide = (Button) view.findViewById(R.id.btnLetsRide);
 
 		// Set Font to view
-		txtLoaction.setTypeface(Constant.getFontSemiBold(getActivity()));
-		txtFrom.setTypeface(Constant.getFontSemiBold(getActivity()));
-		txtTo.setTypeface(Constant.getFontSemiBold(getActivity()));
-		edtLocation.setTypeface(Constant.getFontSemiBold(getActivity()));
-		txtDayFrom.setTypeface(Constant.getFontNormal(getActivity()));
-		txtDayTo.setTypeface(Constant.getFontNormal(getActivity()));
-		txtMonthAndDateFrom
-				.setTypeface(Constant.getFontSemiBold(getActivity()));
-		txtMonthAndDateTo.setTypeface(Constant.getFontSemiBold(getActivity()));
-		txtBicycle.setTypeface(Constant.getFontSemiBold(getActivity()));
-		txtMotorCycle.setTypeface(Constant.getFontSemiBold(getActivity()));
-		txtScooter.setTypeface(Constant.getFontSemiBold(getActivity()));
-		btnLetRide.setTypeface(Constant.getFontSemiBold(getActivity()));
+		txtLoaction.setTypeface(fontSemiBold);
+		txtFrom.setTypeface(fontSemiBold);
+		txtTo.setTypeface(fontSemiBold);
+		edtLocation.setTypeface(fontSemiBold);
+		txtDayFrom.setTypeface(fontNormal);
+		txtDayTo.setTypeface(fontNormal);
+		txtMonthAndDateFrom.setTypeface(fontSemiBold);
+		txtMonthAndDateTo.setTypeface(fontSemiBold);
+
+		txtBicycle.setTypeface(fontSemiBold);
+		txtMotorCycle.setTypeface(fontSemiBold);
+		txtScooter.setTypeface(fontSemiBold);
+		btnLetRide.setTypeface(fontSemiBold);
 
 		// Set listener to view
 		fromDate.setOnClickListener(this);
 		toDate.setOnClickListener(this);
 		btnLetRide.setOnClickListener(this);
-		// set touch listener to view
-		btnLetRide.setOnTouchListener(this);
-		edtLocation.setOnTouchListener(this);
+
+		btnLetRide.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN: {
+					v.getBackground().setColorFilter(0xf0f47521, Mode.SRC_ATOP);
+					v.invalidate();
+					break;
+				}
+				case MotionEvent.ACTION_UP: {
+					v.getBackground().clearColorFilter();
+					v.invalidate();
+					break;
+				}
+				}
+				return false;
+			}
+		});
+
+		edtLocation.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				v.setFocusable(true);
+				v.setFocusableInTouchMode(true);
+
+				return false;
+			}
+		});
 		edtLocation.setCursorVisible(true);
 		return view;
 
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		Log.d(TAG, "onActivityCreated");
-	}
-
-	@Override
 	public void onResume() {
 		super.onResume();
-		Log.d(TAG, "onResume");
-		mOnMessageListner.setTitle("Search Ride");
+		/*mOnMessageListner.setTitle("Search Ride");
 		txtMonthAndDateFrom.setText("" + Constant.getMonth(mMonthFrom) + " "
 				+ mDateFrom);
 		txtDayFrom.setText("" + Constant.getDay(mDayFrom));
@@ -188,18 +205,24 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 		txtDayTo.setText("" + Constant.getDay(mDayTo));
 		mOnMessageListner.setEnableFilterPanel(false);
 		mOnMessageListner.setEnableBackButton(false);
-		mOnMessageListner.setEnableProfileButton(true);
+		mOnMessageListner.setEnableProfileButton(true);*/
+		txtMonthAndDateFrom.setText("" + Constant.getMonth(mMonthFrom) + " "
+				+ mDateFrom);
+		txtDayFrom.setText("" + Constant.getDay(mDayFrom));
+
+		txtMonthAndDateTo.setText("" + Constant.getMonth(mMonthTo) + " "
+				+ mDateTo);
+
+		txtDayTo.setText("" + Constant.getDay(mDayTo));
 
 	}
 
 	@Override
 	public void onClick(View v) {
-		Log.d(TAG, "onClick");
 		switch (v.getId()) {
 		case R.id.btnLetsRide:
-			// if drawer is open then close it.
-			// mOnMessageListner.closeOpenDrawer(true);
-
+			
+			
 			if (mSwtMotorBikes.isChecked()) {
 				Log.d(TAG, "MotorCycle is checked");
 				AppPreferences.getInstance(v.getContext()).setMotorcycleStatus(
@@ -236,6 +259,8 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 			} else if (edtLocation.getText().toString().isEmpty()) {
 				edtLocation.setError("Enter Your Location");
 			} else {
+				// if drawer is open then close it.
+				mOnMessageListner.closeOpenDrawer(true);
 				// Set the value in LocationBin
 				LocationBin locationBin = new LocationBin();
 				locationBin.setLocation(edtLocation.getText().toString());
@@ -254,19 +279,20 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 						.getFragmentManager();
 				FragmentTransaction fragmentTransaction = fragmentManager
 						.beginTransaction();
-				// fragmentTransaction.add(fragment, "searchride");
-				// fragmentTransaction.addToBackStack(null);
-				fragmentTransaction.replace(R.id.content_frame, fragment);
+				//fragmentTransaction.add(fragment, "searchride");
+			//	fragmentTransaction.addToBackStack("searchride");
+				fragmentTransaction.replace(R.id.content_frame, fragment, "searching");
 				fragmentTransaction.commit();
 			}
 
 			break;
 		case R.id.relLtFrom:
-			Log.d(TAG, "click date from");
+			
 			showDatePickerDialogFrom(v);
+
 			break;
 		case R.id.relLtTo:
-			Log.d(TAG, "click date to");
+		
 			showDatePickerDialogTo(v);
 			break;
 		default:
@@ -305,8 +331,8 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 				Toast.makeText(getActivity(), "Please Select a Valid Date",
 						Toast.LENGTH_SHORT).show();
 			} else {
-				txtMonthAndDateFrom.setText("" + Constant.getMonth(month) + " "
-						+ day);
+				txtMonthAndDateFrom.setText("" + Constant.getMonth(month)
+						+ " " + day);
 				txtDayFrom.setText(""
 						+ Constant.getDay(calendar.get(Calendar.DAY_OF_WEEK)));
 				mYearFrom = year;
@@ -343,8 +369,8 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 						Toast.LENGTH_SHORT).show();
 
 			} else {
-				txtMonthAndDateTo.setText("" + Constant.getMonth(month) + " "
-						+ day);
+				txtMonthAndDateTo.setText("" + Constant.getMonth(month)
+						+ " " + day);
 
 				txtDayTo.setText(""
 						+ Constant.getDay(calendar.get(Calendar.DAY_OF_WEEK)));
@@ -359,7 +385,6 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 	}
 
 	public void setAddress(String address) {
-		Log.d(TAG, "set address if it null then throw exception");
 		if (address != null) {
 			if (!address.isEmpty() && edtLocation != null) {
 				edtLocation.setText("" + address);
@@ -373,32 +398,5 @@ public class SearchRideFragment extends Fragment implements OnClickListener,
 		}
 	}
 
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		Log.d(TAG, "onTouch");
-		switch (v.getId()) {
-		case R.id.edtSearchLocation:
-			v.setFocusable(true);
-			v.setFocusableInTouchMode(true);
-			break;
-		case R.id.btnLetsRide:
-			switch (event.getAction()) {
-			case MotionEvent.ACTION_DOWN: {
-				v.getBackground().setColorFilter(0xf0f47521, Mode.SRC_ATOP);
-				v.invalidate();
-				break;
-			}
-			case MotionEvent.ACTION_UP: {
-				v.getBackground().clearColorFilter();
-				v.invalidate();
-				break;
-			}
-			}
-			break;
-		default:
-			break;
-		}
 
-		return false;
-	}
 }

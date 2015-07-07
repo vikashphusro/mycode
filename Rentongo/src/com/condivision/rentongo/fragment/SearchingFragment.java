@@ -119,7 +119,7 @@ public class SearchingFragment extends Fragment {
 		FragmentTransaction fragmentTransaction = fragmentManager
 				.beginTransaction();
 		fragmentTransaction.replace(R.id.content_frame, fragment);
-		fragmentTransaction.addToBackStack("SearchResult");
+		//fragmentTransaction.addToBackStack(null);
 		fragmentTransaction.commit();
 
 	}

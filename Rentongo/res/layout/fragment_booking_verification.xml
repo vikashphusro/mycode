@@ -62,9 +62,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_margin="1dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:background="#F5F5F5" >
 
@@ -129,9 +129,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_margin="1dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:background="@drawable/booking_verification_panel1" >
 
@@ -268,12 +268,16 @@
                     <CheckBox
                         android:id="@+id/chkBookingVerificationTerm"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6" />
 
                     <TextView
                         android:id="@+id/txtBookingVerificationTerm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:text="@string/booking_verification_term_condition"
                         android:textColor="@color/black" />
 
@@ -281,6 +285,7 @@
                         android:id="@+id/txtBookingVerificationTerm2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:autoLink="web"
                         android:linksClickable="true"
                         android:text="@string/booking_verification_term_condition1"

@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.condivision.rentongo.db.DatabaseHelper;
+import com.condivision.rentongo.service.GPSTracker;
 import com.condivision.rentongo.util.AppPreferences;
 import com.condivision.rentongo.util.LocationAddress;
 import com.condivision.rentongo.util.NetworkUtility;
@@ -30,7 +32,8 @@ public class SplashScreenActivity extends Activity {
 	private static final int mInternetId = 3;
 	private static final int mTimeOut = 2000;
 	private ProgressDialog mPdialoge;
-	com.condivision.rentongo.service.GPSTracker gps;
+	private GPSTracker gps;
+	private DatabaseHelper mDatabaseHelper = null;
 
 	// A Handler allows you to send and process Message and Runnable objects
 	// associated with a thread's MessageQueue.
@@ -73,8 +76,9 @@ public class SplashScreenActivity extends Activity {
 		// Dialog for to show progress
 		mPdialoge = new ProgressDialog(SplashScreenActivity.this);
 		mPdialoge.setMessage("Please wait...");
-		//mPdialoge.setCancelable(false);
-
+		mPdialoge.setIndeterminateDrawable(getResources().getDrawable(R.drawable.my_progress_indeterminate));
+		mPdialoge.setCancelable(false);
+		mDatabaseHelper = DatabaseHelper.getInstacne(SplashScreenActivity.this);
 		// check the Network connection
 		if (NetworkUtility.checkConnectivity(SplashScreenActivity.this)) {
 			gps = new com.condivision.rentongo.service.GPSTracker(this);

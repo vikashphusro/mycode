@@ -5,15 +5,18 @@ import com.condivision.rentongo.interfaces.OnMessageListner;
 import com.condivision.rentongo.util.Constant;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
@@ -41,7 +44,6 @@ public class BookingVerificationFragment extends Fragment implements
 	private Button mBtnProceedToPayement;
 	private CheckBox mChKTermAndcondition;
 	private LinearLayout mLayoutAddress;
-	
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -58,6 +60,7 @@ public class BookingVerificationFragment extends Fragment implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "onCreate");
 	}
 
 	@Override
@@ -65,7 +68,8 @@ public class BookingVerificationFragment extends Fragment implements
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		Log.d(TAG, "onCreateView");
-		View view = inflater.inflate(R.layout.fragment_booking_verification, container, false);
+		View view = inflater.inflate(R.layout.fragment_booking_verification,
+				container, false);
 		// Get View
 		mTxtBikeName = (TextView) view
 				.findViewById(R.id.txtBookingVerificationBikeName);
@@ -98,7 +102,8 @@ public class BookingVerificationFragment extends Fragment implements
 				.findViewById(R.id.txtBookingVerificationBikeVendorCity);
 		mTxtTermAndCondition = (TextView) view
 				.findViewById(R.id.txtBookingVerificationTerm);
-		mTxtTermAndCondition1 = (TextView)view.findViewById(R.id.txtBookingVerificationTerm2);
+		mTxtTermAndCondition1 = (TextView) view
+				.findViewById(R.id.txtBookingVerificationTerm2);
 		mChKTermAndcondition = (CheckBox) view
 				.findViewById(R.id.chkBookingVerificationTerm);
 		mBtnProceedToPayement = (Button) view
@@ -128,7 +133,8 @@ public class BookingVerificationFragment extends Fragment implements
 		mTxtVendorSubAddress.setTypeface(Constant.getFontNormal(getActivity()));
 		mTxtVendorAddress.setTypeface(Constant.getFontNormal(getActivity()));
 		mTxtTermAndCondition.setTypeface(Constant.getFontNormal(getActivity()));
-		mTxtTermAndCondition1.setTypeface(Constant.getFontNormal(getActivity()));
+		mTxtTermAndCondition1
+				.setTypeface(Constant.getFontNormal(getActivity()));
 		mBtnProceedToPayement.setTypeface(Constant
 				.getFontSemiBold(getActivity()));
 		// Set Listener
@@ -144,6 +150,7 @@ public class BookingVerificationFragment extends Fragment implements
 	@Override
 	public void onResume() {
 		super.onResume();
+		Log.d(TAG, "onResume");
 		mOnMessageListner.setEnableBackButton(true);
 		mOnMessageListner.setEnableFilterPanel(false);
 		mOnMessageListner.setEnableProfileButton(true);
@@ -153,13 +160,13 @@ public class BookingVerificationFragment extends Fragment implements
 
 	@Override
 	public void onClick(View v) {
-
+		Log.d(TAG, "onClick");
 		switch (v.getId()) {
 		case R.id.txtBookingVerificationTerm2:
 			Log.d(TAG, "Term and Condition");
-			
-		
-		break;
+			displayTermAndConditionDialoge();
+
+			break;
 		case R.id.chkBookingVerificationTerm:
 			Log.d(TAG, "Checkbox Booking Verification");
 
@@ -200,8 +207,38 @@ public class BookingVerificationFragment extends Fragment implements
 		}
 	}
 
+	private void displayTermAndConditionDialoge() {
+		Log.d(TAG, "displayTermAndConditionDialoge");
+		final Dialog dialog = new Dialog(getActivity());
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.getWindow().setBackgroundDrawable(
+				new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		dialog.setContentView(R.layout.dialoge_term_and_condition);
+		dialog.setCancelable(false);
+		TextView tittle = (TextView) dialog
+				.findViewById(R.id.txtTermAndConditionTitle);
+		tittle.setTypeface(Constant.getFontSemiBold(getActivity()));
+		TextView summary = (TextView) dialog
+				.findViewById(R.id.txtTermAndConditionSummary);
+		summary.setTypeface(Constant.getFontNormal(getActivity()));
+		Button btnOk = (Button) dialog.findViewById(R.id.btnTermAndCondition);
+		btnOk.setTypeface(Constant.getFontSemiBold(getActivity()));
+		btnOk.setOnTouchListener(this);
+		btnOk.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Log.d(TAG, "onClick of term and condition dialog");
+				dialog.dismiss();
+			}
+		});
+
+		dialog.show();
+	}
+
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
+		Log.d(TAG, "onTouch");
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN: {
 			v.getBackground().setColorFilter(0xf0f47521, Mode.SRC_ATOP);

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -30,9 +31,11 @@ import com.condivision.rentongo.fragment.HowItWorkFragment;
 import com.condivision.rentongo.fragment.LoginFragment;
 import com.condivision.rentongo.fragment.RateUsFragment;
 import com.condivision.rentongo.fragment.SearchRideFragment;
+import com.condivision.rentongo.fragment.SearchResultRideFragment;
 import com.condivision.rentongo.fragment.SortingAndFilterFragment;
 import com.condivision.rentongo.https.bins.DrawerItemBin;
 import com.condivision.rentongo.interfaces.OnMessageListner;
+import com.condivision.rentongo.util.AppPreferences;
 import com.condivision.rentongo.util.Constant;
 
 /**
@@ -65,7 +68,12 @@ public class SearchScreenActivity extends Activity implements OnClickListener,
 		mIntent = getIntent();
 		// get View of layout
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		
+		//Handle the touch swipe mode of drawer 
 		mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+		//Handle the back button of when drawer is open
+		mDrawerLayout.setFocusableInTouchMode(false);
+		
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		mTitle = (TextView) findViewById(R.id.txtSerachRide);
 		mTitle.setTypeface(Constant.getFontNormal(this));
@@ -134,15 +142,15 @@ public class SearchScreenActivity extends Activity implements OnClickListener,
 
 		// Display default of right drawer
 
-		Log.d(TAG, "default right drawer ");
-		SortingAndFilterFragment sortingAndFilter = SortingAndFilterFragment
-				.getInstance();
-		FragmentManager fragmentManager2 = getFragmentManager();
-		FragmentTransaction fragmentTransaction2 = fragmentManager2
-				.beginTransaction();
-		fragmentTransaction2
-				.replace(R.id.content_frame_right, sortingAndFilter);
-		fragmentTransaction2.commit();
+	//	Log.d(TAG, "default right drawer ");
+		/*
+		 * SortingAndFilterFragment sortingAndFilter = SortingAndFilterFragment
+		 * .getInstance(); FragmentManager fragmentManager2 =
+		 * getFragmentManager(); FragmentTransaction fragmentTransaction2 =
+		 * fragmentManager2 .beginTransaction(); fragmentTransaction2
+		 * .replace(R.id.content_frame_right, sortingAndFilter);
+		 * fragmentTransaction2.commit();
+		 */
 
 	}
 
@@ -188,7 +196,8 @@ public class SearchScreenActivity extends Activity implements OnClickListener,
 				fragmentTransaction.replace(R.id.content_frame, fragment);
 				// fragmentTransaction.setCustomAnimations(R.anim.abc_fade_in,
 				// R.anim.abc_fade_out);
-				fragmentTransaction.addToBackStack(fragment.getClass().getName());
+				fragmentTransaction.addToBackStack(fragment.getClass()
+						.getName());
 				fragmentTransaction.commit();
 				// update selected item and title, then close the drawer
 				mDrawerList.setItemChecked(position, true);
@@ -215,10 +224,10 @@ public class SearchScreenActivity extends Activity implements OnClickListener,
 		switch (v.getId()) {
 		case R.id.btnMenuIcon:
 			Log.d(TAG, "menu button click");
-			if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
-				mDrawerLayout.closeDrawer(Gravity.LEFT);
+			if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
+				mDrawerLayout.closeDrawer(Gravity.START);
 			} else {
-				mDrawerLayout.openDrawer(Gravity.LEFT);
+				mDrawerLayout.openDrawer(Gravity.START);
 
 			}
 
@@ -233,13 +242,19 @@ public class SearchScreenActivity extends Activity implements OnClickListener,
 
 		case R.id.btnProfile:
 			Log.d(TAG, "profile button click");
-			Fragment fragment = new LoginFragment();
-			FragmentManager fragmentManagerLogin = this.getFragmentManager();
-			FragmentTransaction fragmentTransactionLogin = fragmentManagerLogin
-					.beginTransaction();
-			fragmentTransactionLogin.replace(R.id.content_frame, fragment);
-			fragmentTransactionLogin.addToBackStack(null);
-			fragmentTransactionLogin.commit();
+			
+			if (AppPreferences.getInstance(this).getLoginStatus()) {
+				
+			}else{
+				Fragment fragment = new LoginFragment();
+				FragmentManager fragmentManagerLogin = this.getFragmentManager();
+				FragmentTransaction fragmentTransactionLogin = fragmentManagerLogin
+						.beginTransaction();
+				fragmentTransactionLogin.replace(R.id.content_frame, fragment);
+				fragmentTransactionLogin.addToBackStack(null);
+				fragmentTransactionLogin.commit();
+			}
+			
 			break;
 
 		case R.id.btnBackIcon:
@@ -249,10 +264,11 @@ public class SearchScreenActivity extends Activity implements OnClickListener,
 
 		case R.id.btnFilter:
 			Log.d(TAG, "filter button click");
+			//getFragmentManager().popBackStack();
 			if (mDrawerLayout.isDrawerOpen(Gravity.END)) {
 				mDrawerLayout.closeDrawer(Gravity.END);
 			} else {
-				getFragmentManager().popBackStack();
+
 				mDrawerLayout.openDrawer(Gravity.END);
 				SortingAndFilterFragment sortingAndFilter = SortingAndFilterFragment
 						.getInstance();
@@ -268,14 +284,15 @@ public class SearchScreenActivity extends Activity implements OnClickListener,
 
 			break;
 		case R.id.btnSearch:
+			//getFragmentManager().popBackStack();
 			Log.d(TAG, "search button click");
 			if (mDrawerLayout.isDrawerOpen(Gravity.END)) {
 				mDrawerLayout.closeDrawer(Gravity.END);
 			} else {
-				getFragmentManager().popBackStack();
+				// getFragmentManager().popBackStack();
 				mDrawerLayout.openDrawer(Gravity.END);
-				SearchRideFragment searchRideFragment = SearchRideFragment
-						.getInstance();
+				SearchResultRideFragment searchRideFragment = new SearchResultRideFragment();
+
 				FragmentManager fragmentManager = getFragmentManager();
 				FragmentTransaction fragmentTransaction = fragmentManager
 						.beginTransaction();
@@ -294,15 +311,24 @@ public class SearchScreenActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void onBackPressed() {
+
 		Log.d(TAG, "onBackPressed");
-//		// If Drawer if open then close drawer when back button is clicked.
+
 		if (mDrawerLayout.isDrawerOpen(Gravity.END)
-				|| mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+				|| mDrawerLayout.isDrawerOpen(Gravity.START)) {
 			mDrawerLayout.closeDrawer(Gravity.END);
-			mDrawerLayout.closeDrawer(Gravity.LEFT);
+			mDrawerLayout.closeDrawer(Gravity.START);
 		} else {
 			super.onBackPressed();
 		}
+		/*
+		 * // // If Drawer if open then close drawer when back button is
+		 * clicked. if (mDrawerLayout.isDrawerOpen(Gravity.END) ||
+		 * mDrawerLayout.isDrawerOpen(Gravity.START)) {
+		 * mDrawerLayout.closeDrawer(Gravity.END);
+		 * mDrawerLayout.closeDrawer(Gravity.START); } else {
+		 * super.onBackPressed(); }
+		 */
 	}
 
 	@Override
@@ -360,7 +386,7 @@ public class SearchScreenActivity extends Activity implements OnClickListener,
 					|| mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
 				mDrawerLayout.closeDrawer(Gravity.END);
 				mDrawerLayout.closeDrawer(Gravity.LEFT);
-			} 
+			}
 		}
 	}
 

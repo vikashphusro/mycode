@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.condivision.rentongo.https.CommonAsync;
 import com.condivision.rentongo.interfaces.OnMessageListner;
+import com.condivision.rentongo.util.Constant;
 
 /**
  * This class used to confirmation from user for Location Selection.
@@ -35,8 +36,8 @@ public class UserConfirmationScreenActivity extends Activity implements
 	private Button mBtnOk;
 	private Button mBtnDont;
 	private TextView mTitleConfirm1, mTitleConfirm2;
-	private ProgressDialog mPdialoge;
-	private CommonAsync mCommonAsync;
+	//private ProgressDialog mPdialoge;
+	//private CommonAsync mCommonAsync;
 	com.condivision.rentongo.service.GPSTracker gps;
 
 	@SuppressLint("NewApi")
@@ -59,15 +60,15 @@ public class UserConfirmationScreenActivity extends Activity implements
 		// get view
 		mBtnDont = (Button) findViewById(R.id.btnDont);
 		mBtnOk = (Button) findViewById(R.id.btnOk);
-		Typeface font = Typeface.createFromAsset(getAssets(),
-				"proximanova-regular-webfont.ttf");
+		/*Typeface font = Typeface.createFromAsset(getAssets(),
+				"proximanova-regular-webfont.ttf");*/
 		mTitleConfirm1 = (TextView) findViewById(R.id.txtConfirmTitle1);
 		mTitleConfirm2 = (TextView) findViewById(R.id.txtConfirmTitle2);
-
-		mTitleConfirm1.setTypeface(font);
-		mTitleConfirm2.setTypeface(font);
-		mBtnDont.setTypeface(font);
-		mBtnOk.setTypeface(font);
+		//set font to view
+		mTitleConfirm1.setTypeface(Constant.getFontNormal(UserConfirmationScreenActivity.this));
+		mTitleConfirm2.setTypeface(Constant.getFontNormal(UserConfirmationScreenActivity.this));
+		mBtnDont.setTypeface(Constant.getFontNormal(UserConfirmationScreenActivity.this));
+		mBtnOk.setTypeface(Constant.getFontNormal(UserConfirmationScreenActivity.this));
 		// click listener on view
 		mBtnDont.setOnClickListener(this);
 		mBtnDont.setOnTouchListener(this);
@@ -75,9 +76,9 @@ public class UserConfirmationScreenActivity extends Activity implements
 		mBtnOk.setOnClickListener(this);
 		mBtnOk.setOnTouchListener(this);
 
-		mPdialoge = new ProgressDialog(UserConfirmationScreenActivity.this);
-		mPdialoge.setMessage("Please wait...");
-		mPdialoge.setCancelable(true);
+		//mPdialoge = new ProgressDialog(UserConfirmationScreenActivity.this);
+		//mPdialoge.setMessage("Please wait...");
+		//mPdialoge.setCancelable(true);
 
 	}
 
@@ -98,14 +99,11 @@ public class UserConfirmationScreenActivity extends Activity implements
 	protected void onResume() {
 		super.onResume();
 		Log.d(TAG, "onResume");
-
 		gps = new com.condivision.rentongo.service.GPSTracker(this);
 		if (gps.canGetLocation()) {
-
 			Intent intent = new Intent(this, SplashScreenActivity.class);
 			startActivity(intent);
 			finish();
-
 		}
 
 	}
@@ -134,19 +132,16 @@ public class UserConfirmationScreenActivity extends Activity implements
 		switch (v.getId()) {
 		case R.id.btnDont:
 			Log.d(TAG, "Dont button click");
-
 			Intent intent = new Intent(UserConfirmationScreenActivity.this,
 					SearchScreenActivity.class);
 			intent.putExtra("address", "");
 			startActivity(intent);
-
 			break;
 		case R.id.btnOk:
 			Log.d(TAG, "Ok button click");
 			Intent intent1 = new Intent(
 					Settings.ACTION_LOCATION_SOURCE_SETTINGS);
 			UserConfirmationScreenActivity.this.startActivity(intent1);
-
 			break;
 		default:
 			break;

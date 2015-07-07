@@ -47,6 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
 		Log.d(TAG, "DatabaseHelper()");
+		db = getWritableDatabase();
 	}
 
 	public static DatabaseHelper getInstacne(Context c) {

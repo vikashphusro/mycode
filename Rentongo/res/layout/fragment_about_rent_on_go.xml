@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@null"
+    android:background="@color/white"
     android:orientation="vertical" >
 
-    <TextView
-        android:textColor="@color/white"
+    <LinearLayout
+        android:id="@+id/lin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="About Rentongo" />
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnTermandCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/about_us_panel"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="12dp"
+            android:text="Term and Conditions"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnPrivacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/about_us_panel"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="12dp"
+            android:text="Privacy Policy"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lin"
+        android:layout_alignParentTop="true" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:padding="12dp"
+            android:text="Rentongo is a consolidated rental information website for various products. This website is an attempt to organize the rental marketplace in India and promote the idea of renting products to save money and space.
+
+This website lists all kinds of products that are provided on rent by various vendors across various Indian cities like Furniture, Appliances, Adventure Gear, Fancy Dress, Wedding Chairs and Tables, Medical Supplies and the list goes on. Consumers can search for products or browse through products of their interest and also find out the vendor that rents out the product in their locality."
+            android:textColor="@color/black" />
+    </ScrollView>
+
+</RelativeLayout>
